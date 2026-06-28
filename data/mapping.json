@@ -1,0 +1,322 @@
+[
+  {
+    "task_id": "feature-datepicker",
+    "anon_id": "Axaji0y6d",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "feature-datepicker"
+  },
+  {
+    "task_id": "feature-datepicker",
+    "anon_id": "Apbhsahxt",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "feature-datepicker"
+  },
+  {
+    "task_id": "fixer-websocket",
+    "anon_id": "Ahv3a3zmf",
+    "condition": "research",
+    "task_type": "fixer",
+    "familiarity": "high",
+    "actual_dir": "fixer-websocket"
+  },
+  {
+    "task_id": "fixer-websocket",
+    "anon_id": "A8mdd4v30",
+    "condition": "no-research",
+    "task_type": "fixer",
+    "familiarity": "high",
+    "actual_dir": "fixer-websocket"
+  },
+  {
+    "task_id": "refactor-express",
+    "anon_id": "At9nt3w5u",
+    "condition": "research",
+    "task_type": "refactor",
+    "familiarity": "high",
+    "actual_dir": "refactor-express"
+  },
+  {
+    "task_id": "refactor-express",
+    "anon_id": "Azbikcidk",
+    "condition": "no-research",
+    "task_type": "refactor",
+    "familiarity": "high",
+    "actual_dir": "refactor-express"
+  },
+  {
+    "task_id": "integration-stripe",
+    "anon_id": "Awnnhj7xv",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "integration-stripe"
+  },
+  {
+    "task_id": "integration-stripe",
+    "anon_id": "Ag0fn9xuy",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "integration-stripe"
+  },
+  {
+    "task_id": "testing-auth",
+    "anon_id": "A41ibljh7",
+    "condition": "research",
+    "task_type": "testing",
+    "familiarity": "high",
+    "actual_dir": "testing-auth"
+  },
+  {
+    "task_id": "testing-auth",
+    "anon_id": "A5lxo6qji",
+    "condition": "no-research",
+    "task_type": "testing",
+    "familiarity": "high",
+    "actual_dir": "testing-auth"
+  },
+  {
+    "task_id": "feature-wasm-image",
+    "anon_id": "Aujv6oh9s",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-wasm-image"
+  },
+  {
+    "task_id": "feature-wasm-image",
+    "anon_id": "Adbdw2pcn",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-wasm-image"
+  },
+  {
+    "task_id": "integration-graphql-federation",
+    "anon_id": "A9t84azyt",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "integration-graphql-federation"
+  },
+  {
+    "task_id": "integration-graphql-federation",
+    "anon_id": "Ajxepq85j",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "integration-graphql-federation"
+  },
+  {
+    "task_id": "feature-rust-wasm",
+    "anon_id": "Asg65kxvf",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-rust-wasm"
+  },
+  {
+    "task_id": "feature-rust-wasm",
+    "anon_id": "A1t2tala7",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-rust-wasm"
+  },
+  {
+    "task_id": "integration-tracing",
+    "anon_id": "A53lc58dr",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "integration-tracing"
+  },
+  {
+    "task_id": "integration-tracing",
+    "anon_id": "Ac11ertj5",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "integration-tracing"
+  },
+  {
+    "task_id": "feature-cli",
+    "anon_id": "Apht0hl9x",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-cli"
+  },
+  {
+    "task_id": "feature-cli",
+    "anon_id": "Apseimvih",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-cli"
+  },
+  {
+    "task_id": "feature-nextjs-streaming",
+    "anon_id": "Acwi64ciy",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "nextjs-streaming"
+  },
+  {
+    "task_id": "feature-nextjs-streaming",
+    "anon_id": "Ahe7ur23g",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "nextjs-streaming"
+  },
+  {
+    "task_id": "integration-terraform-aws",
+    "anon_id": "Adppq0y9d",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "terraform-aws"
+  },
+  {
+    "task_id": "integration-terraform-aws",
+    "anon_id": "Aom5igqpk",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "low",
+    "actual_dir": "terraform-aws"
+  },
+  {
+    "task_id": "feature-async-pipeline",
+    "anon_id": "Ai7p5tb94",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "async-pipeline"
+  },
+  {
+    "task_id": "feature-async-pipeline",
+    "anon_id": "A874frhoc",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "high",
+    "actual_dir": "async-pipeline"
+  },
+  {
+    "task_id": "refactor-mongodb-to-postgres",
+    "anon_id": "An9j2qp89",
+    "condition": "research",
+    "task_type": "refactor",
+    "familiarity": "low",
+    "actual_dir": "mongodb-to-postgres"
+  },
+  {
+    "task_id": "refactor-mongodb-to-postgres",
+    "anon_id": "Auzfk8ut0",
+    "condition": "no-research",
+    "task_type": "refactor",
+    "familiarity": "low",
+    "actual_dir": "mongodb-to-postgres"
+  },
+  {
+    "task_id": "integration-oauth-pkce",
+    "anon_id": "Acvs4f8cg",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "oauth-pkce"
+  },
+  {
+    "task_id": "integration-oauth-pkce",
+    "anon_id": "Avyie6ivw",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "oauth-pkce"
+  },
+  {
+    "task_id": "testing-playwright-e2e",
+    "anon_id": "Apvs7hzio",
+    "condition": "research",
+    "task_type": "testing",
+    "familiarity": "high",
+    "actual_dir": "testing-playwright-e2e"
+  },
+  {
+    "task_id": "testing-playwright-e2e",
+    "anon_id": "Aykl1cq99",
+    "condition": "no-research",
+    "task_type": "testing",
+    "familiarity": "high",
+    "actual_dir": "testing-playwright-e2e"
+  },
+  {
+    "task_id": "architecture-kafka-events",
+    "anon_id": "Achj755nf",
+    "condition": "research",
+    "task_type": "architecture",
+    "familiarity": "low",
+    "actual_dir": "architecture-kafka-events"
+  },
+  {
+    "task_id": "architecture-kafka-events",
+    "anon_id": "A4zw9xa3k",
+    "condition": "no-research",
+    "task_type": "architecture",
+    "familiarity": "low",
+    "actual_dir": "architecture-kafka-events"
+  },
+  {
+    "task_id": "feature-go-cli",
+    "anon_id": "Ax7eedtjv",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-go-cli"
+  },
+  {
+    "task_id": "feature-go-cli",
+    "anon_id": "Azhwjr64d",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-go-cli"
+  },
+  {
+    "task_id": "integration-redis-cache",
+    "anon_id": "Apja1wj0t",
+    "condition": "research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "integration-redis-cache"
+  },
+  {
+    "task_id": "integration-redis-cache",
+    "anon_id": "Apac56t4u",
+    "condition": "no-research",
+    "task_type": "integration",
+    "familiarity": "high",
+    "actual_dir": "integration-redis-cache"
+  },
+  {
+    "task_id": "feature-react-native-gesture",
+    "anon_id": "Afel6246h",
+    "condition": "research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-react-native-gesture"
+  },
+  {
+    "task_id": "feature-react-native-gesture",
+    "anon_id": "Aid25owf7",
+    "condition": "no-research",
+    "task_type": "feature",
+    "familiarity": "low",
+    "actual_dir": "feature-react-native-gesture"
+  }
+]

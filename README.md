@@ -103,19 +103,20 @@ The **20 tasks** span multiple domains and difficulty levels:
 | 📝 **Identical prompts** | Task descriptions are copy-paste identical |
 | 🔒 **Isolated execution** | Each task runs in a fresh context with no cross-contamination |
 | 👤 **Blind evaluation** | Scores assigned by evaluator without knowing which condition produced the code |
-| 📊 **Multiple dimensions** | Code rated on correctness, style, error handling, documentation, and best practices |
+| 📊 **Multiple dimensions** | Code rated on anti-pattern avoidance, best practices, completeness, error handling, security, and code quality |
 
 ### Scoring
 
-Each solution was rated on a **1–5 scale** across five dimensions:
+Each solution was rated on a **0–5 scale** across six dimensions:
 
 | Dimension | Weight | What It Measures |
 |:---|:---:|:---|
-| **Correctness** | 25% | Does it work? Edge cases handled? |
-| **Code Quality** | 25% | Idiomatic patterns, clean structure, readability |
-| **Error Handling** | 20% | Graceful failures, proper error propagation |
-| **Best Practices** | 20% | Framework idioms, security, performance patterns |
-| **Documentation** | 10% | Comments, types, JSDoc/docstrings where warranted |
+| **Anti-Pattern Avoidance** | 20% | Known anti-patterns, deprecated APIs avoided |
+| **Best Practice Adherence** | 20% | Framework idioms, community patterns followed |
+| **Completeness** | 20% | Comprehensive coverage of main + edge cases |
+| **Error Handling** | 15% | Graceful failures, proper cleanup |
+| **Security** | 10% | Input validation, auth patterns, data safety |
+| **Code Quality** | 15% | Readable, well-structured, consistent |
 
 ---
 
@@ -358,17 +359,71 @@ bestPractices:
 
 ## 🚀 Quick Install
 
-```bash
-# Clone the skill into OMP's managed-skills directory
-cd ~/.omp/agent/managed-skills/
-git clone https://github.com/raz123/best-practices-research-benchmark.git best-practices-research
+### Prerequisites
 
-# Enable in config
-echo 'bestPractices:' >> ~/.omp/agent/config.yml
-echo '  enabled: true' >> ~/.omp/agent/config.yml
+- **[OMP (Oh My Pi)](https://github.com/can1357/oh-my-pi)** — the AI coding harness that runs this skill
+- **Git** — for cloning the repository
+- **Python 3.10+** — required by OMP
+
+Verify OMP is installed before proceeding:
+
+```bash
+which opencode || echo "OMP not found — install it first: https://github.com/can1357/oh-my-pi"
 ```
 
-See [`skill/INSTALL.md`](skill/INSTALL.md) for detailed instructions.
+### Install
+
+```bash
+# 1. Ensure the managed-skills directory exists
+mkdir -p ~/.omp/agent/managed-skills
+
+# 2. Clone the skill
+git clone https://github.com/raz123/best-practices-research-benchmark.git \
+  ~/.omp/agent/managed-skills/best-practices-research
+```
+
+### Enable
+
+Open `~/.omp/agent/config.yml` in your editor and add these lines at the top level (not nested under another key):
+
+```yaml
+bestPractices:
+  enabled: true
+```
+
+> **Already have a `bestPractices:` block?** Just set `enabled: true` inside it — don't append a second one.
+
+### Verify
+
+```bash
+# Confirm the skill directory exists
+ls ~/.omp/agent/managed-skills/best-practices-research/SKILL.md
+
+# Confirm config is valid YAML (requires python)
+python3 -c "import yaml; yaml.safe_load(open('$HOME/.omp/agent/config.yml'))"
+
+# Confirm the key is set
+grep -A1 'bestPractices' ~/.omp/agent/config.yml
+```
+
+After enabling, OMP automatically runs the research middleware on non-trivial tasks. The first time a research task executes, you'll see a `~21s` delay — that's the research subagent fetching docs and patterns. Findings are written to `.planning/best-practices/`.
+
+### Disable
+
+Set `enabled: false` in `~/.omp/agent/config.yml`:
+
+```yaml
+bestPractices:
+  enabled: false
+```
+
+Or remove the skill entirely:
+
+```bash
+rm -rf ~/.omp/agent/managed-skills/best-practices-research
+```
+
+For manual install, customization options, and troubleshooting, see [`skill/INSTALL.md`](skill/INSTALL.md).
 
 ---
 
@@ -389,12 +444,17 @@ best-practices-research-benchmark/
 ├── data/                        # Raw evaluation data
 │   ├── scores.jsonl             # 40 blind evaluation scores
 │   ├── mapping.json             # Anonymization mapping
-│   └── results.json             # Statistical analysis
+│   ├── results.json             # Statistical analysis
+│   └── tasks.json               # 20 task definitions
 ├── research/examples/           # Sample research outputs
 │   ├── integration-stripe.md
 │   ├── feature-wasm-image.md
 │   └── fixer-websocket.md
-└── docs/                        # Methodology documentation
+├── docs/                        # Methodology documentation
+│   ├── FINAL_REPORT.md
+│   └── RUBRIC.md
+├── LICENSE                      # MIT License
+└── CONTRIBUTING.md              # How to contribute
 ```
 
 ---

@@ -1,0 +1,312 @@
+{
+  "task_averages": {
+    "feature-datepicker": {
+      "research": 4.583333333333333,
+      "no-research": 3.8333333333333335
+    },
+    "fixer-websocket": {
+      "research": 4.833333333333333,
+      "no-research": 4.333333333333333
+    },
+    "refactor-express": {
+      "research": 4.833333333333333,
+      "no-research": 4.333333333333333
+    },
+    "integration-stripe": {
+      "research": 4.833333333333333,
+      "no-research": 3.9166666666666665
+    },
+    "testing-auth": {
+      "research": 4.666666666666667,
+      "no-research": 3.75
+    },
+    "feature-wasm-image": {
+      "research": 4.833333333333333,
+      "no-research": 3.3333333333333335
+    },
+    "integration-graphql-federation": {
+      "research": 4.5,
+      "no-research": 3.75
+    },
+    "feature-rust-wasm": {
+      "research": 5,
+      "no-research": 3.9166666666666665
+    },
+    "integration-tracing": {
+      "research": 4.666666666666667,
+      "no-research": 3.8333333333333335
+    },
+    "feature-cli": {
+      "research": 4.666666666666667,
+      "no-research": 3.9166666666666665
+    },
+    "feature-nextjs-streaming": {
+      "research": 4.666666666666667,
+      "no-research": 3.9166666666666665
+    },
+    "integration-terraform-aws": {
+      "research": 4.833333333333333,
+      "no-research": 3.9166666666666665
+    },
+    "feature-async-pipeline": {
+      "research": 4.666666666666667,
+      "no-research": 3.6666666666666665
+    },
+    "refactor-mongodb-to-postgres": {
+      "research": 4.833333333333333,
+      "no-research": 3.75
+    },
+    "integration-oauth-pkce": {
+      "research": 5,
+      "no-research": 4
+    },
+    "testing-playwright-e2e": {
+      "research": 4.5,
+      "no-research": 3.75
+    },
+    "architecture-kafka-events": {
+      "research": 4.666666666666667,
+      "no-research": 3.8333333333333335
+    },
+    "feature-go-cli": {
+      "research": 4.666666666666667,
+      "no-research": 4.0
+    },
+    "integration-redis-cache": {
+      "research": 4.666666666666667,
+      "no-research": 3.8333333333333335
+    },
+    "feature-react-native-gesture": {
+      "research": 4.5,
+      "no-research": 3.3333333333333335
+    }
+  },
+  "dimension_averages": {
+    "research": {
+      "anti_pattern_avoidance": 5,
+      "best_practice_adherence": 5,
+      "completeness": 5,
+      "error_handling": 4.675,
+      "security": 3.65,
+      "code_quality": 5
+    },
+    "no-research": {
+      "anti_pattern_avoidance": 4.15,
+      "best_practice_adherence": 4.0,
+      "completeness": 3.9,
+      "error_handling": 3.75,
+      "security": 3.3,
+      "code_quality": 3.975
+    }
+  },
+  "paired_t_test": {
+    "n": 20,
+    "mean_delta": 0.875,
+    "stdev": 0.23021093810545096,
+    "std_error": 0.0514767306767785,
+    "t_statistic": 16.997971481407976,
+    "degrees_of_freedom": 19
+  },
+  "cost_benefit": {
+    "summary": {
+      "avg_quality_delta": 0.875,
+      "avg_research_overhead_ms": 21175,
+      "avg_total_overhead_ms": 29075,
+      "avg_research_file_bytes": 2987.25,
+      "win_rate": "20/20",
+      "cost_per_quality_point": 33228.57142857143
+    },
+    "per_task": [
+      {
+        "task_id": "feature-datepicker",
+        "quality_delta": 0.7499999999999996,
+        "research_overhead_ms": 45000,
+        "total_overhead_ms": 59000,
+        "research_file_bytes": 2652,
+        "quality_per_research_byte": 0.0002828054298642532,
+        "quality_per_ms": 1.2711864406779654e-05
+      },
+      {
+        "task_id": "fixer-websocket",
+        "quality_delta": 0.5,
+        "research_overhead_ms": 35000,
+        "total_overhead_ms": 45000,
+        "research_file_bytes": 2675,
+        "quality_per_research_byte": 0.00018691588785046728,
+        "quality_per_ms": 1.1111111111111112e-05
+      },
+      {
+        "task_id": "refactor-express",
+        "quality_delta": 0.5,
+        "research_overhead_ms": 35000,
+        "total_overhead_ms": 47000,
+        "research_file_bytes": 2537,
+        "quality_per_research_byte": 0.00019708316909735908,
+        "quality_per_ms": 1.0638297872340426e-05
+      },
+      {
+        "task_id": "integration-stripe",
+        "quality_delta": 0.9166666666666665,
+        "research_overhead_ms": 42000,
+        "total_overhead_ms": 58000,
+        "research_file_bytes": 2865,
+        "quality_per_research_byte": 0.0003199534613147178,
+        "quality_per_ms": 1.580459770114942e-05
+      },
+      {
+        "task_id": "testing-auth",
+        "quality_delta": 0.916666666666667,
+        "research_overhead_ms": 42000,
+        "total_overhead_ms": 62000,
+        "research_file_bytes": 2859,
+        "quality_per_research_byte": 0.0003206249271306985,
+        "quality_per_ms": 1.4784946236559145e-05
+      },
+      {
+        "task_id": "feature-wasm-image",
+        "quality_delta": 1.4999999999999996,
+        "research_overhead_ms": 18500,
+        "total_overhead_ms": 24500,
+        "research_file_bytes": 2150,
+        "quality_per_research_byte": 0.000697674418604651,
+        "quality_per_ms": 6.122448979591835e-05
+      },
+      {
+        "task_id": "integration-graphql-federation",
+        "quality_delta": 0.75,
+        "research_overhead_ms": 17000,
+        "total_overhead_ms": 23000,
+        "research_file_bytes": 2457,
+        "quality_per_research_byte": 0.00030525030525030525,
+        "quality_per_ms": 3.260869565217391e-05
+      },
+      {
+        "task_id": "feature-rust-wasm",
+        "quality_delta": 1.0833333333333335,
+        "research_overhead_ms": 17500,
+        "total_overhead_ms": 23500,
+        "research_file_bytes": 2381,
+        "quality_per_research_byte": 0.00045499090018199644,
+        "quality_per_ms": 4.609929078014185e-05
+      },
+      {
+        "task_id": "integration-tracing",
+        "quality_delta": 0.8333333333333335,
+        "research_overhead_ms": 19000,
+        "total_overhead_ms": 25000,
+        "research_file_bytes": 2629,
+        "quality_per_research_byte": 0.00031697730442500324,
+        "quality_per_ms": 3.333333333333334e-05
+      },
+      {
+        "task_id": "feature-cli",
+        "quality_delta": 0.7500000000000004,
+        "research_overhead_ms": 17500,
+        "total_overhead_ms": 22500,
+        "research_file_bytes": 2862,
+        "quality_per_research_byte": 0.0002620545073375264,
+        "quality_per_ms": 3.3333333333333355e-05
+      },
+      {
+        "task_id": "feature-nextjs-streaming",
+        "quality_delta": 0.7500000000000004,
+        "research_overhead_ms": 12000,
+        "total_overhead_ms": 16000,
+        "research_file_bytes": 2513,
+        "quality_per_research_byte": 0.00029844807003581394,
+        "quality_per_ms": 4.687500000000003e-05
+      },
+      {
+        "task_id": "integration-terraform-aws",
+        "quality_delta": 0.9166666666666665,
+        "research_overhead_ms": 15000,
+        "total_overhead_ms": 21000,
+        "research_file_bytes": 2986,
+        "quality_per_research_byte": 0.0003069881670015628,
+        "quality_per_ms": 4.365079365079364e-05
+      },
+      {
+        "task_id": "feature-async-pipeline",
+        "quality_delta": 1.0000000000000004,
+        "research_overhead_ms": 11000,
+        "total_overhead_ms": 19000,
+        "research_file_bytes": 2939,
+        "quality_per_research_byte": 0.00034025178632187834,
+        "quality_per_ms": 5.2631578947368444e-05
+      },
+      {
+        "task_id": "refactor-mongodb-to-postgres",
+        "quality_delta": 1.083333333333333,
+        "research_overhead_ms": 16000,
+        "total_overhead_ms": 26000,
+        "research_file_bytes": 3295,
+        "quality_per_research_byte": 0.0003287809812847748,
+        "quality_per_ms": 4.166666666666666e-05
+      },
+      {
+        "task_id": "integration-oauth-pkce",
+        "quality_delta": 1,
+        "research_overhead_ms": 13000,
+        "total_overhead_ms": 18000,
+        "research_file_bytes": 2763,
+        "quality_per_research_byte": 0.0003619254433586681,
+        "quality_per_ms": 5.555555555555556e-05
+      },
+      {
+        "task_id": "testing-playwright-e2e",
+        "quality_delta": 0.75,
+        "research_overhead_ms": 12000,
+        "total_overhead_ms": 16000,
+        "research_file_bytes": 2820,
+        "quality_per_research_byte": 0.00026595744680851064,
+        "quality_per_ms": 4.6875e-05
+      },
+      {
+        "task_id": "architecture-kafka-events",
+        "quality_delta": 0.8333333333333335,
+        "research_overhead_ms": 15000,
+        "total_overhead_ms": 19000,
+        "research_file_bytes": 3974,
+        "quality_per_research_byte": 0.00020969635967119614,
+        "quality_per_ms": 4.385964912280703e-05
+      },
+      {
+        "task_id": "feature-go-cli",
+        "quality_delta": 0.666666666666667,
+        "research_overhead_ms": 14000,
+        "total_overhead_ms": 18000,
+        "research_file_bytes": 3594,
+        "quality_per_research_byte": 0.0001854943424225562,
+        "quality_per_ms": 3.703703703703705e-05
+      },
+      {
+        "task_id": "integration-redis-cache",
+        "quality_delta": 0.8333333333333335,
+        "research_overhead_ms": 13000,
+        "total_overhead_ms": 19000,
+        "research_file_bytes": 4397,
+        "quality_per_research_byte": 0.00018952315973011906,
+        "quality_per_ms": 4.385964912280703e-05
+      },
+      {
+        "task_id": "feature-react-native-gesture",
+        "quality_delta": 1.1666666666666665,
+        "research_overhead_ms": 14000,
+        "total_overhead_ms": 20000,
+        "research_file_bytes": 4397,
+        "quality_per_research_byte": 0.0002653324236221666,
+        "quality_per_ms": 5.8333333333333326e-05
+      }
+    ]
+  },
+  "familiar": {
+    "n": 10,
+    "mean_delta": 0.7916666666666667,
+    "win_rate": 10
+  },
+  "unfamiliar": {
+    "n": 10,
+    "mean_delta": 0.9583333333333334,
+    "win_rate": 10
+  }
+}
