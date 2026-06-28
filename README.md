@@ -21,19 +21,19 @@ better code when augmented with best-practices research before task execution.*
 
 ---
 
-## 📋 TL;DR
+## 📋 TL;DR (V3 — 20 tasks, p < 0.001)
 
 | Metric | No Research | With Research | Δ | Δ% |
 |:---|:---:|:---:|:---:|:---:|
-| **Overall Score** (out of 5) | 3.93 | **4.39** | **+0.46** | **+9.2%** |
-| **Win Rate** | 3 / 10 | **7 / 10** | — | **70%** |
-| **Statistical Significance** | — | — | t(8) = 1.817 | p > 0.05 |
+| **Overall Score** (out of 5) | 3.84 | **4.72** | **+0.875** | **+22.8%** |
+| **Win Rate** | 0 / 20 | **20 / 20** | — | **100%** |
+| **Statistical Significance** | — | — | t(19) = 16.998 | **p < 0.001** |
+| **Cost per Quality Point** | — | — | ~33 seconds | — |
 
-> **Bottom line:** Research-augmented generation scored **9.2% higher** on average and won
-> **7 out of 10 tasks**, with the largest gains in refactoring (+1.72), integration (+1.26),
-> and testing (+1.00) tasks. Results trend strongly positive but need more tasks for
-> statistical significance.
-
+> **Bottom line:** Research-augmented code scored **22.8% higher** on average and won
+> **every single task** (20/20). The effect is highly significant (p < 0.001) with a
+> very large effect size (Cohen's d ≈ 3.8). At ~29 seconds overhead per task, the
+> cost-benefit ratio is extremely favorable.
 ---
 
 ## 🎯 The Problem
@@ -68,26 +68,33 @@ This matters because:
 | **Prompt** | Identical task description | Identical task description |
 | **Context** | Codebase only | Codebase + research findings |
 
-### Task Selection
-
-The 10 tasks span multiple domains and difficulty levels:
+The **20 tasks** span multiple domains and difficulty levels:
 
 | # | Task | Type | Familiarity |
 |:---:|:---|:---|:---:|
-| 1 | React Date Picker | Integration | ✅ Familiar |
-| 2 | Express Async Refactor | Refactor | ✅ Familiar |
-| 3 | WebSocket Memory Leak Fix | Debugging | ✅ Familiar |
-| 4 | Stripe Webhook Integration | Integration | ✅ Familiar |
-| 5 | Auth Module Testing | Testing | ✅ Familiar |
-| 6 | WASM Image Processor | Integration | ⚠️ Unfamiliar |
-| 7 | GraphQL Federation Setup | Integration | ⚠️ Unfamiliar |
-| 8 | Rust WASM Crypto | Integration | ⚠️ Unfamiliar |
-| 9 | Distributed Tracing | Integration | ⚠️ Unfamiliar |
-| 10 | CLI Framework (TypeScript) | Refactor | ⚠️ Unfamiliar |
+| 1 | React Date Picker | Feature | ✅ High |
+| 2 | WebSocket Memory Leak | Fixer | ✅ High |
+| 3 | Express Async Refactor | Refactor | ✅ High |
+| 4 | Stripe Webhook Integration | Integration | ✅ High |
+| 5 | Auth Module Testing | Testing | ✅ High |
+| 6 | WASM Image Processor | Feature | ⚠️ Low |
+| 7 | GraphQL Federation | Integration | ⚠️ Low |
+| 8 | Rust WASM Crypto | Feature | ⚠️ Low |
+| 9 | Distributed Tracing | Integration | ⚠️ Low |
+| 10 | CLI Framework | Feature | ⚠️ Low |
+| 11 | Next.js 15 Streaming RSC | Feature | ✅ High |
+| 12 | Terraform AWS Infra | Integration | ⚠️ Low |
+| 13 | Python Async Pipeline | Feature | ✅ High |
+| 14 | MongoDB→PostgreSQL | Refactor | ⚠️ Low |
+| 15 | OAuth 2.0 + PKCE | Integration | ✅ High |
+| 16 | Playwright E2E Tests | Testing | ✅ High |
+| 17 | Kafka Event Architecture | Architecture | ⚠️ Low |
+| 18 | Go CLI Tool | Feature | ⚠️ Low |
+| 19 | Redis Caching Layer | Integration | ✅ High |
+| 20 | React Native Gesture | Feature | ⚠️ Low |
 
-- **5 familiar tasks** — libraries and patterns well-represented in the model's training data
-- **5 unfamiliar tasks** — niche libraries, newer APIs, or less common patterns
-
+- **10 familiar tasks** — well-documented libraries and patterns
+- **10 unfamiliar tasks** — niche libraries, newer APIs, less common patterns
 ### Bias Controls
 
 | Control | How Applied |
@@ -112,7 +119,7 @@ Each solution was rated on a **1–5 scale** across five dimensions:
 
 ---
 
-## 📊 Results
+## 📊 Results (V3 — 20 Tasks)
 
 ### Overall Performance
 
@@ -121,9 +128,9 @@ Each solution was rated on a **1–5 scale** across five dimensions:
 ```
                     Score Distribution (out of 5.0)
 
-  No Research  ████████████████████████████████████░░░░░░░░░░░░  3.93
-  With Research ███████████████████████████████████████████░░░░░  4.39
-                                                      ↑ +0.46 (+9.2%)
+  No Research  ████████████████████████████████░░░░░░░░░░░░░░  3.84
+  With Research ████████████████████████████████████████████░░░  4.72
+                                                      ↑ +0.875 (+22.8%)
 ```
 
 </div>
@@ -132,32 +139,50 @@ Each solution was rated on a **1–5 scale** across five dimensions:
 
 | Task | No Research | With Research | Winner | Margin |
 |:---|:---:|:---:|:---:|:---:|
-| React Date Picker | 4.2 | 4.4 | 🟢 Research | +0.2 |
-| Express Async Refactor | 3.6 | **5.0** | 🟢 Research | **+1.4** |
-| WebSocket Memory Leak | 4.4 | **4.8** | 🟢 Research | +0.4 |
-| Stripe Webhook | 4.2 | 4.2 | 🟡 Tie | 0.0 |
-| Auth Module Testing | 4.0 | **5.0** | 🟢 Research | **+1.0** |
-| WASM Image Processor | 3.8 | 4.0 | 🟢 Research | +0.2 |
-| GraphQL Federation | 3.8 | 3.6 | 🔴 No Research | −0.2 |
-| Rust WASM Crypto | 4.0 | 4.2 | 🟢 Research | +0.2 |
-| Distributed Tracing | 4.0 | 4.4 | 🟢 Research | +0.4 |
-| CLI Framework | 4.2 | **4.8** | 🟢 Research | +0.6 |
+| React Date Picker | 3.83 | **4.58** | 🟢 Research | **+0.75** |
+| WebSocket Memory Leak | 4.33 | **4.83** | 🟢 Research | +0.50 |
+| Express Async Refactor | 4.33 | **4.83** | 🟢 Research | +0.50 |
+| Stripe Webhook | 3.92 | **4.83** | 🟢 Research | **+0.92** |
+| Auth Module Testing | 3.75 | **4.67** | 🟢 Research | **+0.92** |
+| WASM Image Processor | 3.33 | **4.83** | 🟢 Research | **+1.50** |
+| GraphQL Federation | 3.75 | **4.50** | 🟢 Research | +0.75 |
+| Rust WASM Crypto | 3.92 | **5.00** | 🟢 Research | **+1.08** |
+| Distributed Tracing | 3.83 | **4.67** | 🟢 Research | +0.83 |
+| CLI Framework | 3.92 | **4.67** | 🟢 Research | +0.75 |
+| Next.js Streaming RSC | 3.92 | **4.67** | 🟢 Research | +0.75 |
+| Terraform AWS Infra | 3.92 | **4.83** | 🟢 Research | +0.92 |
+| Python Async Pipeline | 3.67 | **4.67** | 🟢 Research | **+1.00** |
+| MongoDB→PostgreSQL | 3.75 | **4.83** | 🟢 Research | **+1.08** |
+| OAuth 2.0 + PKCE | 4.00 | **5.00** | 🟢 Research | **+1.00** |
+| Playwright E2E Tests | 3.75 | **4.50** | 🟢 Research | +0.75 |
+| Kafka Events | 3.83 | **4.67** | 🟢 Research | +0.83 |
+| Go CLI Tool | 4.00 | **4.67** | 🟢 Research | +0.67 |
+| Redis Caching Layer | 3.83 | **4.67** | 🟢 Research | +0.83 |
+| React Native Gesture | 3.33 | **4.50** | 🟢 Research | **+1.17** |
+
+**Research wins 20/20 tasks (100%)**
 
 ### Where Research Helps Most
 
-Research middleware showed the **strongest impact** on tasks requiring deep library knowledge:
+| Task | Delta | Why Research Helped |
+|------|:-----:|:---|
+| WASM Image Processor | **+1.50** | Separable convolution, SIMD, memory management |
+| React Native Gesture | **+1.17** | Gesture composition, haptic patterns, Reanimated idioms |
+| Rust WASM Crypto | **+1.08** | wasm-bindgen patterns, Result types, memory safety |
+| MongoDB→PostgreSQL | **+1.08** | Schema mapping, migration rollback patterns |
+| Python Async Pipeline | **+1.00** | Backpressure, rate limiting, retry patterns |
+| OAuth 2.0 + PKCE | **+1.00** | PKCE flow, token refresh, security patterns |
 
-| Task Type | Avg. Improvement | Why It Helps |
-|:---|:---:|:---|
-| ♻️ **Refactoring** | **+1.72** | Research surfaces correct API usage, avoids deprecated patterns |
-| 🔗 **Integration** | **+1.26** | Current docs prevent wrong endpoints, auth patterns, webhook handling |
-| 🧪 **Testing** | **+1.00** | Idiomatic test structure, proper mocking, coverage strategies |
-| 🐛 **Debugging** | +0.40 | Known issues and fixes are often documented in community resources |
+### Familiar vs Unfamiliar
 
-> 📌 **Key insight:** Research helps *most* where the gap between "it runs" and
-> "it follows best practices" is widest — integration and refactoring tasks where
-> wrong-but-functional code is easy to produce but hard to catch.
+| Category | N | Mean Delta | Win Rate |
+|----------|:-:|:----------:|:--------:|
+| **Familiar tasks** | 10 | +0.79 | 10/10 (100%) |
+| **Unfamiliar tasks** | 10 | +0.96 | 10/10 (100%) |
 
+> 📌 **Key insight:** Research helps *more* on unfamiliar tasks (+0.96 vs +0.79),
+> but the effect is strong on both. The previous V2 finding that "research hurts on
+> unfamiliar tasks" was a sample-size artifact.
 ---
 
 ## 📈 Charts
@@ -173,30 +198,40 @@ The full analysis includes four visualizations:
 
 ---
 
-## 📐 Statistical Analysis
+## 📐 Statistical Analysis (V3)
 
 ### Significance Testing
 
 | Statistic | Value | Interpretation |
 |:---|:---:|:---|
-| **t-statistic** | t(8) = 1.817 | Moderate effect |
-| **p-value** | p > 0.05 | Not yet significant at α = 0.05 |
-| **Effect Size (Cohen's d)** | ~0.65 | Medium-to-large practical effect |
-| **Win Rate** | 7 / 10 (70%) | Strong directional signal |
+| **N** | 20 tasks | Sufficient for strong inference |
+| **Mean Δ** | +0.875 | Large practical effect |
+| **Std Dev** | 0.230 | Consistent across tasks |
+| **t-statistic** | t(19) = 16.998 | Very large |
+| **p-value** | p < 0.001 | **Highly significant** |
+| **Effect Size (Cohen's d)** | ~3.8 | **Very large** |
+| **Win Rate** | 20 / 20 (100%) | Perfect |
+
+### Cost-Benefit Analysis
+
+| Metric | Value |
+|:---|:---:|
+| Avg research time per task | ~21 seconds |
+| Avg total overhead | ~29 seconds |
+| Avg research file size | ~3 KB |
+| Quality improvement | +0.875 points (22.8%) |
+| Cost per quality point | ~33 seconds |
+| **ROI verdict** | **Extremely favorable** |
 
 ### Interpretation
 
-The results are **directionally strong but not yet statistically significant** at the conventional p < 0.05 threshold. This is expected given our sample size of 10 tasks.
+The results are **highly statistically significant** (p < 0.001) with a **very large effect size** (Cohen's d ≈ 3.8). This means:
 
-**What the numbers tell us:**
-
-- 📈 **9.2% improvement** is a meaningful quality gain in practice — even if the p-value
-  hasn't crossed the threshold yet
-- 🎯 **70% win rate** across 10 diverse tasks suggests a real effect, not noise
-- 📐 **Effect size of ~0.65** (medium-to-large) means the practical impact is substantial
-  when the effect *is* present
-- ⏳ **More tasks needed** — we estimate reaching significance with ~15–20 total tasks
-
+- ✅ **The effect is real** — not due to chance
+- ✅ **Practical impact is substantial** — 22.8% quality improvement
+- ✅ **Consistent across tasks** — low variance (SD = 0.23)
+- ✅ **Works everywhere** — familiar and unfamiliar tasks both benefit
+- ✅ **Cost-effective** — ~29 seconds overhead for +0.875 quality points
 > *"Absence of evidence is not evidence of absence."* The data strongly suggests research
 > helps; we need more signal to prove it mathematically.
 
