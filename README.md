@@ -8,11 +8,14 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776ab.svg)](https://python.org)
 [![Status: Published](https://img.shields.io/badge/Status-Published-success.svg)](#results)
+[![Model: mimo-v2.5](https://img.shields.io/badge/Model-mimo--v2.5-purple.svg)](https://github.com/raz123/best-practices-research-benchmark)
 
 <br/>
 
 *A rigorous, controlled experiment measuring whether an AI coding assistant produces
 better code when augmented with best-practices research before task execution.*
+
+**Model tested:** `opencode-go/mimo-v2.5` (all code generation and evaluation)
 
 </div>
 
@@ -58,13 +61,10 @@ This matters because:
 
 ### Experimental Design
 
-We ran a **within-subjects controlled experiment** across 10 diverse coding tasks, each
-executed under two conditions:
-
 | | **Control (No Research)** | **Treatment (With Research)** |
 |:---|:---|:---|
 | **Approach** | Direct task execution | Best-practices research → then task execution |
-| **Model** | Same base model | Same base model |
+| **Model** | `opencode-go/mimo-v2.5` | `opencode-go/mimo-v2.5` |
 | **Prompt** | Identical task description | Identical task description |
 | **Context** | Codebase only | Codebase + research findings |
 
@@ -166,10 +166,10 @@ The full analysis includes four visualizations:
 
 | Chart | Description | Path |
 |:---|:---|:---|
-| 📊 **Score Comparison** | Side-by-side bar chart of overall scores | [`charts/score-comparison.png`](charts/score-comparison.png) |
-| 📉 **Per-Task Breakdown** | Grouped bars for each task by condition | [`charts/per-task-breakdown.png`](charts/per-task-breakdown.png) |
-| 🎯 **Category Analysis** | Improvement deltas by task type | [`charts/category-analysis.png`](charts/category-analysis.png) |
-| 📐 **Dimension Scores** | Radar chart of performance across five dimensions | [`charts/dimension-scores.png`](charts/dimension-scores.png) |
+| 📊 **Score Comparison** | Side-by-side bar chart of overall scores | [`charts/overall-comparison.png`](charts/overall-comparison.png) |
+| 📉 **Per-Task Breakdown** | Grouped bars for each task by condition | [`charts/per-task-wins.png`](charts/per-task-wins.png) |
+| 🎯 **Category Analysis** | Improvement deltas by task type | [`charts/familiar-vs-unfamiliar.png`](charts/familiar-vs-unfamiliar.png) |
+| 📐 **Dimension Scores** | Radar chart of performance across six dimensions | [`charts/quality-radar.png`](charts/quality-radar.png) |
 
 ---
 
@@ -200,6 +200,18 @@ The results are **directionally strong but not yet statistically significant** a
 > *"Absence of evidence is not evidence of absence."* The data strongly suggests research
 > helps; we need more signal to prove it mathematically.
 
+---
+
+## ⚠️ Limitations & Caveats
+
+| Limitation | Detail |
+|:---|:---|
+| **Single model** | All tasks evaluated with `opencode-go/mimo-v2.5`. Results may differ with other models — research might help weaker models more and stronger models less. |
+| **Single evaluator** | One model scored all code. Multiple evaluators would increase reliability. |
+| **No runtime testing** | Evaluation was static code analysis — we didn't run the code to verify correctness. |
+| **Sample size** | 10 tasks (need 20+ for statistical significance at p < 0.05). |
+| **File count imbalance** | CLI Framework task produced 553 research files vs 4 no-research files, skewing raw counts (mitigated by per-task averaging). |
+| **Synthetic tasks** | Tasks were self-contained, not part of a real codebase with existing conventions. |
 ---
 
 ## ✅ Recommendations
@@ -268,21 +280,25 @@ best_practices_research: false
 benchmark-repo/
 ├── README.md                    # You are here
 ├── charts/                      # Visualization outputs
-│   ├── score-comparison.png
-│   ├── per-task-breakdown.png
-│   ├── category-analysis.png
-│   └── dimension-scores.png
+│   ├── overall-comparison.png
+│   ├── per-task-wins.png
+│   ├── familiar-vs-unfamiliar.png
+│   └── quality-radar.png
 ├── data/                        # Raw evaluation data
-├── docs/                        # Methodology documentation
-└── examples/
-    ├── research/                # Solutions with research middleware
-    │   ├── task-01-react-datepicker/
-    │   ├── task-02-express-async/
-    │   └── ...
-    └── no-research/             # Solutions without research
-        ├── task-01-react-datepicker/
-        ├── task-02-express-async/
-        └── ...
+│   ├── scores.jsonl             # 609 blind evaluation scores
+│   ├── mapping.json             # Anonymization mapping
+│   └── results.json             # Statistical analysis
+├── examples/
+│   ├── research/                # Solutions with research middleware
+│   │   ├── feature-01/          # React Date Picker
+│   │   ├── refactor-01/         # Express Async Refactor
+│   │   └── integration-01/      # Stripe Integration
+│   └── no-research/             # Solutions without research
+│       ├── feature-01/
+│       ├── refactor-01/
+│       └── integration-01/
+├── research/                    # Best-practices research files
+└── scripts/                     # Analysis tools
 ```
 
 ---

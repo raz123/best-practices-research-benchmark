@@ -35,5 +35,3 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Charts (regenerate with generate_charts.py)
-charts/*.png
