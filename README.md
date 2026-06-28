@@ -277,7 +277,7 @@ Based on our findings, here's when to enable or disable the research middleware:
 This research middleware is built as an **Oh My Pi (OMP)** managed skill.
 
 **Prerequisites:**
-- [OMP (Oh My Pi)](https://github.com/raz123/oh-my-pi) installed
+- [OMP (Oh My Pi)](https://github.com/can1357/oh-my-pi) installed
 - Managed skill at `~/.omp/agent/managed-skills/best-practices-research/`
 
 **Enable / Disable** — edit `~/.omp/agent/config.yml`:
@@ -356,31 +356,45 @@ bestPractices:
 4. We'll evaluate and merge!
 ---
 
+## 🚀 Quick Install
+
+```bash
+# Clone the skill into OMP's managed-skills directory
+cd ~/.omp/agent/managed-skills/
+git clone https://github.com/raz123/best-practices-research-benchmark.git best-practices-research
+
+# Enable in config
+echo 'bestPractices:' >> ~/.omp/agent/config.yml
+echo '  enabled: true' >> ~/.omp/agent/config.yml
+```
+
+See [`skill/INSTALL.md`](skill/INSTALL.md) for detailed instructions.
+
+---
+
 ## 📁 Repository Structure
 
 ```
-benchmark-repo/
+best-practices-research-benchmark/
 ├── README.md                    # You are here
-├── charts/                      # Visualization outputs
+├── skill/                       # Installable OMP skill
+│   ├── SKILL.md                 # The skill definition
+│   ├── INSTALL.md               # Installation guide
+│   └── SAMPLE-PROMPT.md         # What the skill injects into agents
+├── charts/                      # Visualization outputs (V3)
 │   ├── overall-comparison.png
 │   ├── per-task-wins.png
 │   ├── familiar-vs-unfamiliar.png
 │   └── quality-radar.png
 ├── data/                        # Raw evaluation data
-│   ├── scores.jsonl             # 609 blind evaluation scores
+│   ├── scores.jsonl             # 40 blind evaluation scores
 │   ├── mapping.json             # Anonymization mapping
 │   └── results.json             # Statistical analysis
-├── examples/
-│   ├── research/                # Solutions with research middleware
-│   │   ├── feature-01/          # React Date Picker
-│   │   ├── refactor-01/         # Express Async Refactor
-│   │   └── integration-01/      # Stripe Integration
-│   └── no-research/             # Solutions without research
-│       ├── feature-01/
-│       ├── refactor-01/
-│       └── integration-01/
-├── research/                    # Best-practices research files
-└── scripts/                     # Analysis tools
+├── research/examples/           # Sample research outputs
+│   ├── integration-stripe.md
+│   ├── feature-wasm-image.md
+│   └── fixer-websocket.md
+└── docs/                        # Methodology documentation
 ```
 
 ---
