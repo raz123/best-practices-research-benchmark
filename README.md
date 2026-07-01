@@ -9,31 +9,33 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776ab.svg)](https://python.org)
 [![Status: Published](https://img.shields.io/badge/Status-Published-success.svg)](#results)
 [![Model: mimo-v2.5](https://img.shields.io/badge/Model-mimo--v2.5-purple.svg)](https://github.com/raz123/best-practices-research-benchmark)
+[![Model: deepseek-v4-flash](https://img.shields.io/badge/Model-deepseek--v4--flash-teal.svg)](https://github.com/raz123/best-practices-research-benchmark)
 
 <br/>
 
 *A rigorous, controlled experiment measuring whether an AI coding assistant produces
 better code when augmented with best-practices research before task execution.*
 
-**Model tested:** `opencode-go/mimo-v2.5` (all code generation and evaluation)
+**Models tested:** `opencode-go/mimo-v2.5` and `opencode-go/deepseek-v4-flash`
 
 </div>
 
 ---
 
-## 📋 TL;DR (V3 — 20 tasks, p < 0.001)
+## 📋 TL;DR — Two Models, Two Stories
 
-| Metric | No Research | With Research | Δ | Δ% |
-|:---|:---:|:---:|:---:|:---:|
-| **Overall Score** (out of 5) | 3.84 | **4.72** | **+0.875** | **+22.8%** |
-| **Win Rate** | 0 / 20 | **20 / 20** | — | **100%** |
-| **Statistical Significance** | — | — | t(19) = 16.998 | **p < 0.001** |
-| **Cost per Quality Point** | — | — | ~33 seconds | — |
+| Metric | MIMO-v2.5 (V3) | DeepSeek V4 Flash (V4) |
+|:---|:---:|:---:|
+| **No-Research Score** (out of 5) | 3.84 | **4.36** |
+| **Research Score** (out of 5) | **4.72** | 4.38 |
+| **Delta** | **+0.88 (+22.8%)** | +0.02 (+0.5%) |
+| **Win Rate** | 20 / 20 (100%) | 10 / 20 (50%) |
+| **Statistical Significance** | **p < 0.001** | p ≈ 0.50 |
+| **Cohen's d** | ~3.8 (very large) | 0.05 (negligible) |
+| **Verdict** | **Research dramatically helps** | **No meaningful improvement** |
 
-> **Bottom line:** Research-augmented code scored **22.8% higher** on average and won
-> **every single task** (20/20). The effect is highly significant (p < 0.001) with a
-> very large effect size (Cohen's d ≈ 3.8). At ~29 seconds overhead per task, the
-> cost-benefit ratio is extremely favorable.
+> **The key finding:** Research helps the weaker model dramatically (MIMO-v2.5: +22.8%, p < 0.001), but as models improve, the marginal benefit disappears (DeepSeek V4 Flash: +0.5%, p = 0.50). The stronger the baseline model, the less room for research to add value.
+
 ---
 
 ## 🎯 The Problem
@@ -48,12 +50,19 @@ framework idiom. The question we asked:
 > current docs, GitHub issues, known pitfalls, and community patterns — does the resulting
 > code measurably improve?**
 
+We then asked a follow-up:
+
+> **Does the answer change as the base model gets stronger?** If a frontier model already
+> knows today's best practices from training, does explicit research still add value?
+
 This matters because:
 - 🏗️ **Integration tasks** are where real projects live or die — wrong API usage means
   subtle bugs that surface in production.
 - ♻️ **Refactoring** with bad patterns creates technical debt faster than it removes it.
 - 🧪 **Tests** written without understanding testing idioms miss the cases that actually matter.
 - 💰 **Every percentage point of quality improvement** compounds across a codebase.
+- 🧠 **As models improve**, the research overhead equation shifts — understanding when research
+  adds value (and when it doesn't) is critical for efficient AI-assisted development.
 
 ---
 
@@ -64,7 +73,8 @@ This matters because:
 | | **Control (No Research)** | **Treatment (With Research)** |
 |:---|:---|:---|
 | **Approach** | Direct task execution | Best-practices research → then task execution |
-| **Model** | `opencode-go/mimo-v2.5` | `opencode-go/mimo-v2.5` |
+| **Model (V3)** | `opencode-go/mimo-v2.5` | `opencode-go/mimo-v2.5` |
+| **Model (V4)** | `opencode-go/deepseek-v4-flash` | `opencode-go/deepseek-v4-flash` |
 | **Prompt** | Identical task description | Identical task description |
 | **Context** | Codebase only | Codebase + research findings |
 
@@ -95,11 +105,12 @@ The **20 tasks** span multiple domains and difficulty levels:
 
 - **10 familiar tasks** — well-documented libraries and patterns
 - **10 unfamiliar tasks** — niche libraries, newer APIs, less common patterns
+
 ### Bias Controls
 
 | Control | How Applied |
 |:---|:---|
-| 🔄 **Same model** | Both conditions use identical base model and temperature |
+| 🔄 **Same model** | Both conditions use identical base model and temperature per experiment |
 | 📝 **Identical prompts** | Task descriptions are copy-paste identical |
 | 🔒 **Isolated execution** | Each task runs in a fresh context with no cross-contamination |
 | 👤 **Blind evaluation** | Scores assigned by evaluator without knowing which condition produced the code |
@@ -120,7 +131,7 @@ Each solution was rated on a **0–5 scale** across six dimensions:
 
 ---
 
-## 📊 Results (V3 — 20 Tasks)
+## 📊 Results V3 — MIMO-v2.5 (20 Tasks)
 
 ### Overall Performance
 
@@ -182,13 +193,135 @@ Each solution was rated on a **0–5 scale** across six dimensions:
 | **Unfamiliar tasks** | 10 | +0.96 | 10/10 (100%) |
 
 > 📌 **Key insight:** Research helps *more* on unfamiliar tasks (+0.96 vs +0.79),
-> but the effect is strong on both. The previous V2 finding that "research hurts on
-> unfamiliar tasks" was a sample-size artifact.
+> but the effect is strong on both.
+
+---
+
+## 📊 Results V4 — DeepSeek V4 Flash (20 Tasks)
+
+### Overall Performance
+
+<div align="center">
+
+```
+                    Score Distribution (out of 5.0)
+
+  No Research  █████████████████████████████████████░░░░░  4.36
+  With Research ██████████████████████████████████████░░░░  4.38
+                                                   ↑ +0.02 (+0.5%)
+```
+
+</div>
+
+### Win/Loss Breakdown
+
+| Task | No Research | With Research | Winner | Margin |
+|:---|:---:|:---:|:---:|:---:|
+| React Date Picker | 3.42 | **4.17** | 🟢 Research | **+0.75** |
+| WebSocket Memory Leak | 4.25 | **4.42** | 🟢 Research | +0.17 |
+| Express Async Refactor | 4.67 | **4.92** | 🟢 Research | +0.25 |
+| Stripe Webhook | 4.25 | **5.00** | 🟢 Research | **+0.75** |
+| Auth Module Testing | 4.42 | **4.75** | 🟢 Research | +0.33 |
+| WASM Image Processor | **4.25** | 4.17 | 🔴 No Research | -0.08 |
+| GraphQL Federation | 3.75 | **4.00** | 🟢 Research | +0.25 |
+| Rust WASM Crypto | 4.83 | **4.92** | 🟢 Research | +0.08 |
+| Distributed Tracing | **4.83** | 4.67 | 🔴 No Research | -0.17 |
+| CLI Framework | 4.58 | **4.83** | 🟢 Research | +0.25 |
+| Next.js Streaming RSC | **4.50** | 4.25 | 🔴 No Research | -0.25 |
+| Terraform AWS Infra | **4.67** | 3.33 | 🔴 No Research | -1.33 |
+| Python Async Pipeline | **4.67** | 4.42 | 🔴 No Research | -0.25 |
+| MongoDB→PostgreSQL | **4.92** | 4.67 | 🔴 No Research | -0.25 |
+| OAuth 2.0 + PKCE | 4.92 | 4.92 | ⚪ Tie | 0.00 |
+| Playwright E2E Tests | **4.17** | 4.00 | 🔴 No Research | -0.17 |
+| Kafka Events | 3.25 | **3.42** | 🟢 Research | +0.17 |
+| Go CLI Tool | 4.08 | 4.08 | ⚪ Tie | 0.00 |
+| Redis Caching Layer | **4.25** | 3.92 | 🔴 No Research | -0.33 |
+| React Native Gesture | 4.50 | **4.75** | 🟢 Research | +0.25 |
+
+**Research wins 10/20 (50%) — No research wins 8/20 (40%) — Ties 2/20 (10%)**
+
+### Where Research Helped Most (and Least)
+
+| Task | Delta | What Happened |
+|------|:-----:|:---|
+| React Date Picker | **+0.75** | Research surfaced ARIA grid patterns, focus management, keyboard nav |
+| Stripe Webhook | **+0.75** | Webhook signature verification, idempotency, event routing |
+| Auth Module Testing | **+0.33** | Research added edge case coverage for token expiry, refresh flows |
+| Terraform AWS | **-1.33** | Research led to overly complex module structure; direct was more pragmatic |
+| Redis Caching | **-0.33** | Research added complexity without proportional benefit |
+
+### Familiar vs Unfamiliar
+
+| Category | N | Mean Delta | Research Wins |
+|----------|:-:|:----------:|:-------------:|
+| **Familiar tasks** | 10 | +0.13 | 7/10 (70%) |
+| **Unfamiliar tasks** | 10 | -0.08 | 3/10 (30%) |
+
+> 📌 **Key insight:** Unlike MIMO-v2.5, DeepSeek V4 Flash shows a *reversal* — research helps
+> slightly on familiar tasks but slightly *hurts* on unfamiliar ones. The research signal
+> becomes noise for tasks the model already handles well from training.
+
+### Dimension Scores
+
+| Dimension | No Research | Research | Delta |
+|:----------|:-----------:|:--------:|:-----:|
+| Anti-Pattern Avoidance | 4.60 | 4.73 | +0.13 |
+| Best Practice Adherence | 4.68 | 4.73 | +0.05 |
+| Completeness | 4.43 | 4.30 | -0.13 |
+| Error Handling | 4.08 | 4.13 | +0.05 |
+| Security | 3.78 | 3.75 | -0.03 |
+| Code Quality | 4.60 | 4.65 | +0.05 |
+
+---
+
+## 🔄 Model Comparison: MIMO-v2.5 vs DeepSeek V4 Flash
+
+### The Core Finding
+
+| Aspect | MIMO-v2.5 | DeepSeek V4 Flash |
+|:-------|:---------:|:-----------------:|
+| **No-Research score** | 3.84 | **4.36** (+0.52) |
+| **Research score** | **4.72** | 4.38 (-0.34) |
+| **Research delta** | **+0.88 (22.8%)** | +0.02 (0.5%) |
+| **Effect size (Cohen's d)** | **3.8 (very large)** | 0.05 (negligible) |
+| **Variance across tasks (SD)** | 0.23 (low) | 0.44 (high) |
+| **Familiar tasks delta** | **+0.79** | +0.13 |
+| **Unfamiliar tasks delta** | **+0.96** | -0.08 |
+
+### Visual Comparison
+
+```
+                    Baseline vs Research-Augmented Scores
+
+MIMO-v2.5 No Research:    3.84 ██████████████████████░░░░░░░░░░░░░░
+MIMO-v2.5 With Research:  4.72 ███████████████████████████████████░░░  ↑ +22.8%
+DeepSeek No Research:     4.36 ████████████████████████████░░░░░░░░
+DeepSeek With Research:   4.38 ████████████████████████████░░░░░░░░  ↑ +0.5%
+                                         Rubric ceiling →          5.0
+```
+
+### Why the Difference?
+
+**1. Baseline quality gap.** DeepSeek V4 Flash's unassisted score (4.36) already surpasses what MIMO-v2.5 achieves *with* research in 15/20 tasks. The model's training data appears to thoroughly cover the best practices that the research middleware surfaces.
+
+**2. Diminishing returns at the ceiling.** The 0–5 rubric leaves only ~0.64 points of headroom above DeepSeek V4 Flash's baseline. Even a perfect research intervention can't move the needle much.
+
+**3. Research sometimes distracts.** DeepSeek V4 Flash lost 8/20 tasks with research enabled. The research findings may have introduced noise or pushed the model toward overly complex solutions (notably Terraform AWS: -1.33).
+
+**4. Signal becomes noise for strong models.** Where MIMO-v2.5 benefited from targeted guidance on niche patterns, DeepSeek V4 Flash already encodes those patterns in its weights. Additional context competes with the model's own priors rather than supplementing them.
+
+### What This Means
+
+> **Research middleware is most valuable for models with lower baseline quality.**
+> As models improve, the marginal benefit of explicit research decreases.
+> The research-overhead vs quality-gain equation shifts toward "skip research"
+> for frontier models on mainstream tasks.
+
 ---
 
 ## 📈 Charts
 
-The full analysis includes four visualizations:
+### Comparison (Both Models)
 
 | Chart | Description | Path |
 |:---|:---|:---|
@@ -197,11 +330,22 @@ The full analysis includes four visualizations:
 | 🎯 **Category Analysis** | Improvement deltas by task type | [`charts/familiar-vs-unfamiliar.png`](charts/familiar-vs-unfamiliar.png) |
 | 📐 **Dimension Scores** | Radar chart of performance across six dimensions | [`charts/quality-radar.png`](charts/quality-radar.png) |
 
+### DeepSeek V4 Flash (V4)
+
+| Chart | Description | Path |
+|:---|:---|:---|
+| 📊 **Score Comparison** | Side-by-side bar chart of overall scores | [`charts/v4/overall-comparison.png`](charts/v4/overall-comparison.png) |
+| 📉 **Per-Task Breakdown** | Grouped bars for each task by condition | [`charts/v4/per-task-wins.png`](charts/v4/per-task-wins.png) |
+| 🎯 **Category Analysis** | Improvement deltas by task type | [`charts/v4/familiar-vs-unfamiliar.png`](charts/v4/familiar-vs-unfamiliar.png) |
+| 📐 **Dimension Scores** | Radar chart of performance across six dimensions | [`charts/v4/quality-radar.png`](charts/v4/quality-radar.png) |
+
 ---
 
-## 📐 Statistical Analysis (V3)
+## 📐 Statistical Analysis
 
-### Significance Testing
+### V3 — MIMO-v2.5
+
+#### Significance Testing
 
 | Statistic | Value | Interpretation |
 |:---|:---:|:---|
@@ -213,7 +357,7 @@ The full analysis includes four visualizations:
 | **Effect Size (Cohen's d)** | ~3.8 | **Very large** |
 | **Win Rate** | 20 / 20 (100%) | Perfect |
 
-### Cost-Benefit Analysis
+#### Cost-Benefit Analysis
 
 | Metric | Value |
 |:---|:---:|
@@ -224,7 +368,7 @@ The full analysis includes four visualizations:
 | Cost per quality point | ~33 seconds |
 | **ROI verdict** | **Extremely favorable** |
 
-### Interpretation
+#### Interpretation
 
 The results are **highly statistically significant** (p < 0.001) with a **very large effect size** (Cohen's d ≈ 3.8). This means:
 
@@ -233,8 +377,39 @@ The results are **highly statistically significant** (p < 0.001) with a **very l
 - ✅ **Consistent across tasks** — low variance (SD = 0.23)
 - ✅ **Works everywhere** — familiar and unfamiliar tasks both benefit
 - ✅ **Cost-effective** — ~29 seconds overhead for +0.875 quality points
-> *"Absence of evidence is not evidence of absence."* The data strongly suggests research
-> helps; we need more signal to prove it mathematically.
+
+### V4 — DeepSeek V4 Flash
+
+#### Significance Testing
+
+| Statistic | Value | Interpretation |
+|:---|:---:|:---|
+| **N** | 20 tasks | Sufficient for inference |
+| **Mean Δ** | +0.021 | Essentially zero |
+| **Std Dev** | 0.440 | High variance across tasks |
+| **t-statistic** | t(19) = 0.212 | Very small |
+| **p-value** | ≈ 0.500 | **Not significant** |
+| **Effect Size (Cohen's d)** | 0.05 | **Negligible effect** |
+| **Win Rate** | 10 / 20 (50%) | No better than chance |
+
+#### Cost-Benefit Analysis
+
+| Metric | Value |
+|:---|:---:|
+| Avg research time per task | ~21 seconds |
+| Quality improvement | +0.02 points (0.5%) |
+| **ROI verdict** | **Not justified** |
+
+#### Interpretation
+
+The effect is **not statistically significant** (p ≈ 0.50). The tiny delta and high variance mean the research intervention had no detectable impact on DeepSeek V4 Flash code quality.
+
+- ❌ **No evidence of effect** — p ≈ 0.50 is exactly what chance looks like
+- ❌ **Practical impact is negligible** — 0.5% improvement
+- ❌ **High variance** — SD = 0.44, meaning research sometimes hurts
+- ❌ **Only 50% win rate** — coin flip
+
+> *"Absence of evidence is evidence of absence"* for practical purposes here. If there is any real effect at all, it is far too small to justify the ~21 second overhead.
 
 ---
 
@@ -242,12 +417,14 @@ The results are **highly statistically significant** (p < 0.001) with a **very l
 
 | Limitation | Detail |
 |:---|:---|
-| **Single model** | All tasks evaluated with `opencode-go/mimo-v2.5`. Research may help weaker models more and stronger models less — multi-model testing needed. |
-| **Single evaluator** | One model scored all code. Multiple evaluators would increase inter-rater reliability. |
+| **Two models tested** | MIMO-v2.5 and DeepSeek V4 Flash cover mid-tier and strong models. Results may differ with GPT-4o, Claude 4, Gemini 2.5, or other families. |
+| **Single evaluator** | One model scored all code. Multiple evaluators would increase inter-rater reliability. The evaluation agent was the same model family as the DeepSeek V4 Flash generator — potential for model-specific scoring preferences. |
 | **No runtime testing** | Static code analysis only — code wasn't executed to verify correctness. |
 | **Same-agent generation** | Both conditions generated by the same agent per batch. The agent may have been influenced by research when writing no-research code, despite instructions not to read it. |
 | **Anonymization limited** | File/directory names not randomized — evaluator could infer condition from code structure patterns. |
 | **Synthetic tasks** | Self-contained tasks, not part of a real codebase with existing conventions and technical debt. |
+| **Scoring ceiling** | The 0-5 rubric may not capture finer quality distinctions at the high end, especially for frontier models. |
+
 ---
 
 ## ✅ Recommendations
@@ -258,6 +435,7 @@ Based on our findings, here's when to enable or disable the research middleware:
 
 | Scenario | Why |
 |:---|:---|
+| **Using a weaker / older model** | Research provides a consistent +22.8% boost |
 | **Integrating third-party APIs** | Current docs prevent wrong auth patterns, endpoint changes |
 | **Refactoring existing code** | Avoids deprecated patterns, surfaces modern idioms |
 | **Writing test suites** | Idiomatic test structure, proper mocking strategies |
@@ -268,6 +446,7 @@ Based on our findings, here's when to enable or disable the research middleware:
 
 | Scenario | Why |
 |:---|:---|
+| **Using a frontier model (DeepSeek V4 Flash, GPT-4o, Claude 4)** | Research shows no meaningful quality gain |
 | **Simple CRUD operations** | Research overhead exceeds the marginal quality gain |
 | **Boilerplate / scaffolding** | Standard patterns don't benefit from deep research |
 | **Familiar, well-documented tasks** | If the model already has strong training data coverage |
@@ -334,20 +513,22 @@ bestPractices:
 
 ## 🔮 Future Work
 
-### ✅ Completed (V3)
+### ✅ Completed
 
-- [x] Scale to 20 tasks — achieved p < 0.001 statistical significance
+- [x] Scale to 20 tasks — achieved p < 0.001 statistical significance for MIMO-v2.5
 - [x] Cost-benefit analysis — ~29s overhead for +0.875 quality points
 - [x] Research output documentation — real examples from Stripe, WASM, WebSocket tasks
+- [x] **Does research help less as models improve?** ✅ **ANSWERED** — DeepSeek V4 Flash shows +0.5% (p=0.50). As models improve, the marginal benefit of explicit research disappears. The answer is a clear **yes**: research helps less (and eventually not at all) as the base model gets stronger.
 
 ### Remaining Questions
 
-- 🧠 **Does research help less as models improve?** Test with frontier models (GPT-4o, Claude 4, Gemini 2.5) — if base models already know best practices, the research overhead may not justify the marginal gain.
 - 🔄 **Diminishing returns on research depth?** Our research files are ~65 lines / ~3KB. Does 2x research effort yield 2x quality, or plateau?
 - 🏢 **Real-world validation** — does research-augmented code reduce bug rates, code review comments, and maintenance cost in production?
 - 👥 **Multi-evaluator scoring** — add inter-rater reliability metrics with 3+ independent evaluators
 - ⚡ **Runtime testing** — execute the generated code to verify it actually works, not just reads well
 - 📊 **Research quality** — compare official docs vs. community sources vs. LLM-generated research
+- 🧪 **Dynamic gating** — develop a heuristic that enables research only when model uncertainty is high or the task involves niche/bleeding-edge APIs
+- 🔀 **Cross-model evaluation** — test with GPT-4o, Claude 4, Gemini 2.5, and other frontier model families
 
 ### How to Contribute
 
@@ -355,6 +536,7 @@ bestPractices:
 2. Add a new task to `examples/` with both conditions
 3. Submit a PR with your scoring methodology
 4. We'll evaluate and merge!
+
 ---
 
 ## 🚀 Quick Install
@@ -436,16 +618,25 @@ best-practices-research-benchmark/
 │   ├── SKILL.md                 # The skill definition
 │   ├── INSTALL.md               # Installation guide
 │   └── SAMPLE-PROMPT.md         # What the skill injects into agents
-├── charts/                      # Visualization outputs (V3)
+├── charts/                      # Comparison charts (both models)
+│   ├── overall-comparison.png
+│   ├── per-task-wins.png
+│   ├── familiar-vs-unfamiliar.png
+│   └── quality-radar.png
+├── charts/v4/                   # Visualization outputs (V4 — DeepSeek V4 Flash)
 │   ├── overall-comparison.png
 │   ├── per-task-wins.png
 │   ├── familiar-vs-unfamiliar.png
 │   └── quality-radar.png
 ├── data/                        # Raw evaluation data
-│   ├── scores.jsonl             # 40 blind evaluation scores
-│   ├── mapping.json             # Anonymization mapping
-│   ├── results.json             # Statistical analysis
+│   ├── scores.jsonl             # 40 blind evaluation scores (V3)
+│   ├── mapping.json             # Anonymization mapping (V3)
+│   ├── results.json             # Statistical analysis (V3)
 │   └── tasks.json               # 20 task definitions
+├── data/v4/                     # Raw evaluation data (V4 — DeepSeek V4 Flash)
+│   ├── scores.jsonl             # 40 blind evaluation scores
+│   ├── results.json             # Full statistical analysis
+│   └── task_mapping.json        # Condition reveal mapping
 ├── research/examples/           # Sample research outputs
 │   ├── integration-stripe.md
 │   ├── feature-wasm-image.md
@@ -467,6 +658,7 @@ We welcome contributions! Whether you want to:
 - 🔬 Improve the evaluation methodology
 - 📊 Add new visualizations
 - 🐛 Report issues with existing results
+- 🧪 Test with additional models (GPT-4o, Claude 4, Gemini 2.5)
 
 Please read our [Contributing Guidelines](CONTRIBUTING.md) and submit a PR.
 

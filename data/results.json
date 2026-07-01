@@ -308,5 +308,280 @@
     "n": 10,
     "mean_delta": 0.9583333333333334,
     "win_rate": 10
+  },
+  "deepseek_v4_flash": {
+    "model": "opencode-go/deepseek-v4-flash",
+    "timestamp": "2026-07-01",
+    "task_averages": {
+      "feature-rust-wasm": {
+        "research": 4.916666666666667,
+        "no-research": 4.833333333333333,
+        "delta": 0.08333333333333393
+      },
+      "integration-oauth-pkce": {
+        "research": 4.916666666666667,
+        "no-research": 4.916666666666667,
+        "delta": 0.0
+      },
+      "refactor-mongodb-to-postgres": {
+        "research": 4.666666666666667,
+        "no-research": 4.916666666666667,
+        "delta": -0.25
+      },
+      "refactor-express": {
+        "research": 4.916666666666667,
+        "no-research": 4.666666666666667,
+        "delta": 0.25
+      },
+      "feature-async-pipeline": {
+        "research": 4.416666666666667,
+        "no-research": 4.666666666666667,
+        "delta": -0.25
+      },
+      "feature-cli": {
+        "research": 4.833333333333333,
+        "no-research": 4.583333333333333,
+        "delta": 0.25
+      },
+      "feature-wasm-image": {
+        "research": 4.166666666666667,
+        "no-research": 4.25,
+        "delta": -0.08333333333333304
+      },
+      "integration-tracing": {
+        "research": 4.666666666666667,
+        "no-research": 4.833333333333333,
+        "delta": -0.16666666666666607
+      },
+      "integration-terraform-aws": {
+        "research": 3.3333333333333335,
+        "no-research": 4.666666666666667,
+        "delta": -1.3333333333333335
+      },
+      "integration-graphql-federation": {
+        "research": 4,
+        "no-research": 3.75,
+        "delta": 0.25
+      },
+      "feature-react-native-gesture": {
+        "research": 4.75,
+        "no-research": 4.5,
+        "delta": 0.25
+      },
+      "testing-auth": {
+        "research": 4.75,
+        "no-research": 4.416666666666667,
+        "delta": 0.33333333333333304
+      },
+      "testing-playwright-e2e": {
+        "research": 4.0,
+        "no-research": 4.166666666666667,
+        "delta": -0.16666666666666696
+      },
+      "architecture-kafka-events": {
+        "research": 3.4166666666666665,
+        "no-research": 3.25,
+        "delta": 0.16666666666666652
+      },
+      "integration-stripe": {
+        "research": 5,
+        "no-research": 4.25,
+        "delta": 0.75
+      },
+      "integration-redis-cache": {
+        "research": 3.9166666666666665,
+        "no-research": 4.25,
+        "delta": -0.3333333333333335
+      },
+      "feature-datepicker": {
+        "research": 4.166666666666667,
+        "no-research": 3.4166666666666665,
+        "delta": 0.7500000000000004
+      },
+      "fixer-websocket": {
+        "research": 4.416666666666667,
+        "no-research": 4.25,
+        "delta": 0.16666666666666696
+      },
+      "feature-go-cli": {
+        "research": 4.083333333333333,
+        "no-research": 4.083333333333333,
+        "delta": 0.0
+      },
+      "feature-nextjs-streaming": {
+        "research": 4.25,
+        "no-research": 4.5,
+        "delta": -0.25
+      }
+    },
+    "dimension_averages": {
+      "no-research": {
+        "anti_pattern_avoidance": 4.6,
+        "best_practice_adherence": 4.675,
+        "completeness": 4.425,
+        "error_handling": 4.075,
+        "security": 3.775,
+        "code_quality": 4.6
+      },
+      "research": {
+        "anti_pattern_avoidance": 4.725,
+        "best_practice_adherence": 4.725,
+        "completeness": 4.3,
+        "error_handling": 4.125,
+        "security": 3.75,
+        "code_quality": 4.65
+      }
+    },
+    "paired_t_test": {
+      "n": 20,
+      "mean_delta": 0.02083333333333339,
+      "stdev": 0.4400250856751145,
+      "t_statistic": 0.21173678977766672,
+      "degrees_of_freedom": 19,
+      "p_approx": 0.5,
+      "significant": false
+    },
+    "pairs": [
+      {
+        "task_id": "feature-rust-wasm",
+        "research_score": 4.916666666666667,
+        "no_research_score": 4.833333333333333,
+        "delta": 0.08333333333333393,
+        "winner": "research"
+      },
+      {
+        "task_id": "integration-oauth-pkce",
+        "research_score": 4.916666666666667,
+        "no_research_score": 4.916666666666667,
+        "delta": 0.0,
+        "winner": "tie"
+      },
+      {
+        "task_id": "refactor-mongodb-to-postgres",
+        "research_score": 4.666666666666667,
+        "no_research_score": 4.916666666666667,
+        "delta": -0.25,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "refactor-express",
+        "research_score": 4.916666666666667,
+        "no_research_score": 4.666666666666667,
+        "delta": 0.25,
+        "winner": "research"
+      },
+      {
+        "task_id": "feature-async-pipeline",
+        "research_score": 4.416666666666667,
+        "no_research_score": 4.666666666666667,
+        "delta": -0.25,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "feature-cli",
+        "research_score": 4.833333333333333,
+        "no_research_score": 4.583333333333333,
+        "delta": 0.25,
+        "winner": "research"
+      },
+      {
+        "task_id": "feature-wasm-image",
+        "research_score": 4.166666666666667,
+        "no_research_score": 4.25,
+        "delta": -0.08333333333333304,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "integration-tracing",
+        "research_score": 4.666666666666667,
+        "no_research_score": 4.833333333333333,
+        "delta": -0.16666666666666607,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "integration-terraform-aws",
+        "research_score": 3.3333333333333335,
+        "no_research_score": 4.666666666666667,
+        "delta": -1.3333333333333335,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "integration-graphql-federation",
+        "research_score": 4,
+        "no_research_score": 3.75,
+        "delta": 0.25,
+        "winner": "research"
+      },
+      {
+        "task_id": "feature-react-native-gesture",
+        "research_score": 4.75,
+        "no_research_score": 4.5,
+        "delta": 0.25,
+        "winner": "research"
+      },
+      {
+        "task_id": "testing-auth",
+        "research_score": 4.75,
+        "no_research_score": 4.416666666666667,
+        "delta": 0.33333333333333304,
+        "winner": "research"
+      },
+      {
+        "task_id": "testing-playwright-e2e",
+        "research_score": 4.0,
+        "no_research_score": 4.166666666666667,
+        "delta": -0.16666666666666696,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "architecture-kafka-events",
+        "research_score": 3.4166666666666665,
+        "no_research_score": 3.25,
+        "delta": 0.16666666666666652,
+        "winner": "research"
+      },
+      {
+        "task_id": "integration-stripe",
+        "research_score": 5,
+        "no_research_score": 4.25,
+        "delta": 0.75,
+        "winner": "research"
+      },
+      {
+        "task_id": "integration-redis-cache",
+        "research_score": 3.9166666666666665,
+        "no_research_score": 4.25,
+        "delta": -0.3333333333333335,
+        "winner": "no-research"
+      },
+      {
+        "task_id": "feature-datepicker",
+        "research_score": 4.166666666666667,
+        "no_research_score": 3.4166666666666665,
+        "delta": 0.7500000000000004,
+        "winner": "research"
+      },
+      {
+        "task_id": "fixer-websocket",
+        "research_score": 4.416666666666667,
+        "no_research_score": 4.25,
+        "delta": 0.16666666666666696,
+        "winner": "research"
+      },
+      {
+        "task_id": "feature-go-cli",
+        "research_score": 4.083333333333333,
+        "no_research_score": 4.083333333333333,
+        "delta": 0.0,
+        "winner": "tie"
+      },
+      {
+        "task_id": "feature-nextjs-streaming",
+        "research_score": 4.25,
+        "no_research_score": 4.5,
+        "delta": -0.25,
+        "winner": "no-research"
+      }
+    ]
   }
 }
